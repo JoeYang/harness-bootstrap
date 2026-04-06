@@ -22,10 +22,10 @@ AFTER:  ~/.claude/CLAUDE.md (~90 lines -> universal only)
 |---|---|
 | `catalog/` | Joe's existing config documented with reasoning (seed knowledge) |
 | `docs/` | Harness anatomy, cookbooks, capability catalog, audit reference |
-| `examples/` | Complete reference configs the skills read when generating *(planned)* |
-| `rules-library/` | Reusable rule files copied into projects *(planned)* |
-| `configs/` | Saved bootstrap answers for config reuse *(planned)* |
-| `skills/` | `/harness-bootstrap` and `/harness-update` *(planned)* |
+| `examples/` | Complete reference configs the skills read when generating |
+| `rules-library/` | Reusable rule files copied into projects |
+| `configs/` | Saved bootstrap answers for config reuse |
+| `skills/` | `/harness-bootstrap` and `/harness-update` |
 
 ## When to Use What
 
@@ -43,7 +43,7 @@ AFTER:  ~/.claude/CLAUDE.md (~90 lines -> universal only)
    export HARNESS_DIR="$HOME/clawd/harness"
    ```
 
-2. Once skills are built (Phase 4), symlink them:
+2. Symlink the skills into your global Claude config:
    ```bash
    ln -s "$HARNESS_DIR/skills/harness-bootstrap" ~/.claude/skills/harness-bootstrap
    ln -s "$HARNESS_DIR/skills/harness-update" ~/.claude/skills/harness-update
