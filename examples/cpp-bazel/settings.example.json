@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": ["bazel *", "git *", "clang-format *", "clang-tidy *"],
+    "deny": ["rm -rf", "cat .env", "echo * > .env"]
+  },
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Edit|Write",
+      "hooks": [{
+        "type": "command",
+        "command": "FILE=$(echo $CLAUDE_TOOL_INPUT | jq -r '.file_path // .filePath // empty') && [ -n \"$FILE\" ] && case \"$FILE\" in *.cpp|*.h|*.cc|*.hpp) clang-format -i \"$FILE\";; esac; exit 0",
+        "timeout": 10000
+      }]
+    }],
+    "Stop": [{
+      "hooks": [{
+        "type": "command",
+        "command": "if git diff --quiet HEAD 2>/dev/null && git diff --cached --quiet 2>/dev/null; then exit 0; fi; echo 'Uncommitted changes detected. Review with git diff.' >&2; exit 0"
+      }]
+    }]
+  }
+}
