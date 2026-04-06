@@ -1,0 +1,10 @@
+# Agent memory (session-specific, not project knowledge)
+.claude/
+
+# Local overrides
+CLAUDE.local.md
+*.local.json
+
+# OS
+.DS_Store
+Thumbs.db
